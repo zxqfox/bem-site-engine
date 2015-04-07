@@ -1,0 +1,6 @@
+block('content').mod('view', 'sitemap').content()(function () {
+    return {
+        block: 'sitemap',
+        node: this.data.menu
+    };
+});

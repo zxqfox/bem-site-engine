@@ -1,0 +1,18 @@
+block('sitemap')(
+    content()(function () {
+        var menu = this.data.menu[0].items;
+
+        // console.log(menu);
+
+        function goTree(currentTickets) {
+
+            for (var i = 0; i < currentTickets.length; ++i) {
+                if (currentTickets[i].items && currentTickets[i].items.length !== 0) { // если у элемента есть дети
+                    goTree(currentTickets[i].items);
+                }
+            }
+        }
+
+        return goTree(menu);
+    })
+);
