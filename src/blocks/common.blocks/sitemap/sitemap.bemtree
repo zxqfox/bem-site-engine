@@ -1,18 +1,25 @@
 block('sitemap')(
     content()(function () {
-        var menu = this.data.menu[0].items;
+        var menu = this.data.menu[0].items,
+            menuList = [],
+            section = [];
 
-        // console.log(menu);
+        // console.log(this.data.menu[0].items);
 
-        function goTree(currentTickets) {
-
-            for (var i = 0; i < currentTickets.length; ++i) {
-                if (currentTickets[i].items && currentTickets[i].items.length !== 0) { // если у элемента есть дети
-                    goTree(currentTickets[i].items);
+        function goTree(menu) {
+            for (var i = 0; i < menu.length; ++i) {
+                if (menu[i].items && menu[i].items.length !== 0) {
+                    section.push({ elem: 'title', content: menu[i].title });
+                    goTree(menu[i].items);
+                } else {
+                    section.push({ elem: 'item', content: menu[i].title });
                 }
             }
+            menuList.push({ elem: 'section', content: section });
+            section = [];
         }
 
-        return goTree(menu);
+        goTree(menu);
+        return menuList;
     })
 );

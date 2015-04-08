@@ -1,6 +1,14 @@
 block('content').mod('view', 'sitemap').content()(function () {
-    return {
-        block: 'sitemap',
-        node: this.data.menu
-    };
+    var data = this.data;
+
+    return [
+        {
+            tag: 'h2',
+            content: data.node.title[data.req.lang]
+        },
+        {
+            block: 'sitemap',
+            node: this.data.menu
+        }
+    ];
 });
