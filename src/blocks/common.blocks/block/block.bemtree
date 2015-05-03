@@ -29,7 +29,7 @@ block('block')(
             tabsContent.push(_examples.content);
         }
 
-        if (_source.blocksData) {
+        if (!_.isEmpty(_source.blocksData)) {
             tabsHeader.push({
                 elem: 'tab',
                 url: 'sources',
