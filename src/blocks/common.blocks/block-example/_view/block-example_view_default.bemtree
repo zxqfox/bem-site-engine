@@ -2,15 +2,15 @@ block('block-example').mod('view', 'default')(
     elem('source')(
         content()(function () {
             var examplesData = this.data.node.source.examplesData,
-                hasExamplesData = !!Object.keys(examplesData).length;
+                exampleData = examplesData[this._name];
 
             return [
-                hasExamplesData ? {
+                exampleData ? {
                     elem: 'source-item',
                     elemMods: { type: 'custom-blocks' },
                     content: {
                         block: 'block-example-custom-blocks',
-                        content: this.data.node.source.examplesData
+                        content: exampleData
                     }
                 } : '',
                 {

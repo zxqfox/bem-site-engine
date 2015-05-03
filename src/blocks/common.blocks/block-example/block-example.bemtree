@@ -60,7 +60,7 @@ block('block-example')(
             url = this._url,
             ua = req.headers['user-agent'],
             examplesData = this.data.node.source.examplesData,
-            hasExamplesData = !!Object.keys(examplesData).length;
+            exampleData = examplesData[this._name];
 
         return [
             {
@@ -94,7 +94,7 @@ block('block-example')(
                             width: 220
                         }
                     },
-                    hasExamplesData ? {
+                    exampleData ? {
                         elem: 'source-switcher',
                         elemMods: { type: 'custom-blocks' },
                         content: 'custom blocks'
