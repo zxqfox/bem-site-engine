@@ -66,8 +66,7 @@ BEMDOM.decl('block-example', {
     _getHtml: function (url) {
         $.ajax({ url: url, dataType: 'text', context: this })
             .done(function (html) {
-                html += ' ';
-                this.elem('source-code', 'type', 'html').text(html);
+                this.elem('source-code', 'type', 'html').text(html + ' ');
             })
             .fail(function (error) { console.log('error', error); });
     },

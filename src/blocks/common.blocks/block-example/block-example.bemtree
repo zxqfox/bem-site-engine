@@ -58,7 +58,9 @@ block('block-example')(
         var title = this._title,
             name = this._name,
             url = this._url,
-            ua = req.headers['user-agent'];
+            ua = req.headers['user-agent'],
+            examplesData = this.data.node.source.examplesData,
+            hasExamplesData = !!Object.keys(examplesData).length;
 
         return [
             {
@@ -92,6 +94,11 @@ block('block-example')(
                             width: 220
                         }
                     },
+                    hasExamplesData ? {
+                        elem: 'source-switcher',
+                        elemMods: { type: 'custom-blocks' },
+                        content: 'custom blocks'
+                    } : '',
                     {
                         elem: 'source-switcher',
                         elemMods: { type: 'bemjson' },

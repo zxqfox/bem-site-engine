@@ -1,0 +1,15 @@
+block('block-source').content()(function() {
+    return applyNext().filter(function(file) {
+        return !file.isDir;
+    })
+    .map(function(file) {
+        return {
+            tag: 'li',
+            content: {
+                block: 'link',
+                url: 'https://raw.githubusercontent.com/bem/bem-components/v2/' + file.path,
+                content: file.path
+            }
+        };
+    });
+});

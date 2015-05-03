@@ -10,6 +10,8 @@
 
 - block: image
 
+- block: block-example-custom-blocks
+
 - elems:
   - anchor
   - blank
