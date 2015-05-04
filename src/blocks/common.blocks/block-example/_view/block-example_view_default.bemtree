@@ -5,6 +5,15 @@ block('block-example').mod('view', 'default')(
                 exampleData = examplesData[this._name];
 
             return [
+                this._deps ? {
+                    elem: 'source-item',
+                    elemMods: { type: 'deps' },
+                    content: {
+                        elem: 'source-code',
+                        elemMods: { view: 'text' },
+                        content: this.xmlEscape(this._deps)
+                    }
+                } : '',
                 exampleData ? {
                     elem: 'source-item',
                     elemMods: { type: 'custom-blocks' },

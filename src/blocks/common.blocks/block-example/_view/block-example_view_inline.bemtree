@@ -16,6 +16,15 @@ block('block-example').mod('view', 'inline')(
     elem('source')(
         content()(function () {
             return [
+                this._deps ? {
+                    elem: 'source-item',
+                    elemMods: { type: 'deps' },
+                    content: {
+                        elem: 'source-code',
+                        elemMods: { view: 'text' },
+                        content: this.xmlEscape(this._deps)
+                    }
+                } : '',
                 {
                     elem: 'source-item',
                     elemMods: { type: 'bemjson' },
